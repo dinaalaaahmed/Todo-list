@@ -11,7 +11,7 @@ export class NotesController {
   async addNote(@Request() req, @Body() notesDto: NotesDto  ){
     const user = await this.notesService.createNote(req.user.id,notesDto.note);
     if(user){
-        return "{success:200}";
+        return {success:200};
     }
     else{
       return new ForbiddenException();
@@ -23,7 +23,7 @@ export class NotesController {
     
     const user = await this.notesService.removeNotes(req.user.id,notesDto.note);
     if(user){
-        return "{success:200}";
+        return {success:200};
     }
     else{
       return new ForbiddenException();
@@ -35,7 +35,8 @@ export class NotesController {
   @UseGuards(JwtAuthGuard)
   @Get('get')
   async getNote(@Request() req){
-    const user = await this.notesService.getNotes(req.user._id);
+    console.log(req.user.id)
+    const user = await this.notesService.getNotes(req.user.id);
     if(user){
         return user;
     }

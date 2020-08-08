@@ -22,7 +22,7 @@ export class UsersRepositry {
     });
   }
   async findOneAndUpdate(item,update): Promise<User| null> {
-    return await this.userModel.findByIdAndUpdate(item,update,(err, user)=>{
+    return await this.userModel.findOneAndUpdate(item,update,(err, user)=>{
         if(err) return 0;
         return user;
     });

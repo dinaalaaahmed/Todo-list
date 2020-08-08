@@ -13,7 +13,7 @@ export class NotesService {
   ) {}
     async createNote(id: string, note:string): Promise<any> {
     const user = await this.usersRepositry.findOneAndUpdate({_id:id},{$push:{note:note}});
-        
+    return user;
     }
     async getNotes(id: string): Promise<any> {
         const user = await this.usersRepositry.findOne({_id:id});

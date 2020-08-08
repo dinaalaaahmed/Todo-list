@@ -12,12 +12,7 @@ import { User } from 'src/models/user.model';
 import { UsersRepositry } from 'src/users/users.service';
 @Module({
   imports: [
-    TypegooseModule.forFeature([User]),
-    PassportModule.register({ defaultStrategy: 'jwt' }),
-    JwtModule.register({
-      secret: jwtConstants.secret,
-      signOptions: { expiresIn: '1000000h' },
-    }),
+    TypegooseModule.forFeature([User])
   ],
   providers: [AuthService, JwtStrategy, UsersRepositry],
   controllers: [AuthController],

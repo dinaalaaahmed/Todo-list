@@ -7,6 +7,7 @@ import { ReturnModelType } from "@typegoose/typegoose";
 import { User } from "../models/user.model";
 import { InjectModel } from "nestjs-typegoose";
 import { UsersRepositry } from '../users/users.service'
+import passport from 'passport';
 
 @Injectable()
 export class AuthService {
@@ -41,14 +42,17 @@ export class AuthService {
 
   async login(email: string, pass: string): Promise<any> {
     const user = await this.usersRepositry.findOne({email:email});
+    console.log("user",user)
      if (user) {
-      return await bcrypt.compare(pass, user.password);
+      if(await bcrypt.compare(pass, user.password)) return user;
+      return 0;
      }
   }
 
   async token(user: any) {
-
+    console.log(user._id)
     const payload = {id:user._id};
+    
     return {
       access_token: 'Bearer ' +sign(payload, jwtConstants.secret, { expiresIn: '67472347632732h'}),
     };
