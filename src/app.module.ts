@@ -10,7 +10,7 @@ import { UsersRepositry } from './users/users.service';
 
 @Module({
   imports: [ AuthModule, NotesModule, NotesModule, 
-    TypegooseModule.forRoot('mongodb://localhost:27017/todo-list', {
+    TypegooseModule.forRoot(jwtConstants.CONNECTION_STRING, {
     useNewUrlParser: true,
     useFindAndModify: false
   })],
