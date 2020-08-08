@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "99daf6de-15cf-4fd5-b373-b35c4c320cd0",
+		"name": "TodoList",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "127.0.0.1:3000/auth/signUp",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"dihghgn33@gmail.com\", \"password\":\"123\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/auth/login",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": "signUp with email and password"
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:3000/auth/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"dihghgn33@gmail.com\", \"password\":\"123\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/auth/login",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"auth",
+						"login"
+					]
+				},
+				"description": "login with email and password"
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:3000/notes/remove",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMmVmNjBjZmM5ZjA4MTcyMDBlNjZjMSIsImlhdCI6MTU5NjkxMzE2NCwiZXhwIjoyNDI5MDA0NTMwNzQ3NDgzNTB9.bI9YzPmD4AYVGeF0ry4WAQtCPIMB377RFok6V_MBOnY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"note\":\"hi\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/notes/remove",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"notes",
+						"remove"
+					]
+				},
+				"description": "remove a note"
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:3000/notes/get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMmVmNjBjZmM5ZjA4MTcyMDBlNjZjMSIsImlhdCI6MTU5NjkxMzE2NCwiZXhwIjoyNDI5MDA0NTMwNzQ3NDgzNTB9.bI9YzPmD4AYVGeF0ry4WAQtCPIMB377RFok6V_MBOnY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"note\":\"hi\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/notes/get",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"notes",
+						"get"
+					]
+				},
+				"description": "get notes"
+			},
+			"response": []
+		},
+		{
+			"name": "127.0.0.1:3000/notes/add",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmMmVmNjBjZmM5ZjA4MTcyMDBlNjZjMSIsImlhdCI6MTU5NjkxMzE2NCwiZXhwIjoyNDI5MDA0NTMwNzQ3NDgzNTB9.bI9YzPmD4AYVGeF0ry4WAQtCPIMB377RFok6V_MBOnY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"note\":\"hi\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:3000/notes/add",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "3000",
+					"path": [
+						"notes",
+						"add"
+					]
+				},
+				"description": "add note"
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
