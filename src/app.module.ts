@@ -4,13 +4,11 @@ import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { NotesModule } from './notes/notes.module';
 import { TypegooseModule } from "nestjs-typegoose";
-import {jwtConstants} from './auth/constants';
-import { UsersController } from './users/users.controller';
-import { UsersRepositry } from './users/users.service';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [ AuthModule, NotesModule, NotesModule, 
-    TypegooseModule.forRoot(jwtConstants.CONNECTION_STRING, {
+  imports: [ AuthModule, NotesModule, NotesModule, ConfigModule.forRoot(),
+    TypegooseModule.forRoot(process.env.CONNECTION_STRING, {
     useNewUrlParser: true,
     useFindAndModify: false
   })],
