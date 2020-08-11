@@ -1,20 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
-
-
-import { PassportModule } from '@nestjs/passport';
-import { JwtModule } from '@nestjs/jwt';
-import { jwtConstants } from './constants';
 import { JwtStrategy } from './jwt.strategy';
 import { AuthController } from './auth.controller';
 import { TypegooseModule } from "nestjs-typegoose";
 import { User } from 'src/models/user.model';
-import { UsersService } from 'src/users/users.service';
+import { UsersRepository } from 'src/users/usersReopsitry';
 @Module({
   imports: [
     TypegooseModule.forFeature([User])
   ],
-  providers: [AuthService, JwtStrategy, UsersService],
+  providers: [AuthService, JwtStrategy, UsersRepository],
   controllers: [AuthController],
 })
 export class AuthModule {}

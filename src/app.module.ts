@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { AuthModule } from './auth/auth.module';
 import { NotesModule } from './notes/notes.module';
 import { TypegooseModule } from "nestjs-typegoose";
@@ -12,8 +10,8 @@ import { ConfigModule } from '@nestjs/config';
     useNewUrlParser: true,
     useFindAndModify: false
   })],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 
 export class AppModule {}

@@ -8,26 +8,21 @@ export class NotesController {
 
   @UseGuards(JwtAuthGuard)
   @Put('add')
-  async addNote(@Request() req, @Body() notesDto: NotesDto  ){
+  async addNote(@Request() req, @Body() notesDto: NotesDto){
+  
     const user = await this.notesService.createNote(req.user.id,notesDto.note);
-    if(user){
-        return {success:200};
-    }
-    else{
-      return new ForbiddenException();
-    }
+    if(user) return {success:200};
+    return new ForbiddenException();
+
   }
+  
   @UseGuards(JwtAuthGuard)
   @Delete('remove')
   async deleteNote(@Request() req, @Body() notesDto: NotesDto){
-    
+   
     const user = await this.notesService.removeNotes(req.user.id,notesDto.note);
-    if(user){
-        return {success:200};
-    }
-    else{
-      return new ForbiddenException();
-    }
+    if(user) return {success:200};
+    return new ForbiddenException();
     
     
   }
@@ -35,13 +30,10 @@ export class NotesController {
   @UseGuards(JwtAuthGuard)
   @Get('get')
   async getNote(@Request() req){
-    console.log(req.user.id)
-    const user = await this.notesService.getNotes(req.user.id);
-    if(user){
-        return user;
-    }
-    else{
-      return new NotFoundException();
-    }
+
+    const notes = await this.notesService.getNotes(req.user.id);
+    if(notes) return notes;
+    return new NotFoundException();
+    
   }
 }

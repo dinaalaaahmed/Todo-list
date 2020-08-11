@@ -3,13 +3,13 @@ import { NotesService } from './notes.service';
 import { TypegooseModule } from "nestjs-typegoose";
 import { User } from 'src/models/user.model';
 import { NotesController } from './notes.controller';
-import { UsersService } from 'src/users/users.service';
+import { UsersRepository } from 'src/users/usersReopsitry';
 
 @Module({
   imports: [
     TypegooseModule.forFeature([User]),
 ],
-providers: [NotesService, UsersService],
+providers: [NotesService, UsersRepository],
 controllers: [NotesController],
 })
 export class NotesModule {}
