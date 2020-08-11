@@ -1,5 +1,6 @@
 import { prop } from "@typegoose/typegoose";
-
+import {Entity} from 'typeorm'
+@Entity()
 export class User {
   @prop({ required: true })
   email: string;

@@ -6,20 +6,20 @@ import { sign }from 'jsonwebtoken'
 import { ReturnModelType } from "@typegoose/typegoose";
 import { User } from "../models/user.model";
 import { InjectModel } from "nestjs-typegoose";
-import { UsersRepositry } from '../users/users.service'
+import { UsersService } from '../users/users.service'
 import passport from 'passport';
 
 @Injectable()
 export class AuthService {
   constructor(
     @InjectModel(User) private readonly userModel: ReturnModelType<typeof User>,
-    private readonly usersRepositry: UsersRepositry
+    private readonly usersService: UsersService
 
   ) {}
 
  
   async validateUser(id: string): Promise<any> {
-    return await this.usersRepositry.findOne({id:id});
+    return await this.usersService.findOne({id:id});
     
   }
   async sign(email: string, pass: string): Promise<any> {
@@ -29,19 +29,19 @@ export class AuthService {
     });
     const valid = shcema.validate({email:email, password:pass});
     
-    const isExist= await this.usersRepositry.findOne({email:email});
+    const isExist= await this.usersService.findOne({email:email});
     console.log(isExist)
     if (valid.error||isExist)
     return 0;
     const hash = await bcrypt.hash(pass, 10);
     const user = await new this.userModel({email:email, password:hash, note:[]});
     await user.save();
-    const u = await this.usersRepositry.findOne({email: email});
+    const u = await this.usersService.findOne({email: email});
     return u;
   }
 
   async login(email: string, pass: string): Promise<any> {
-    const user = await this.usersRepositry.findOne({email:email});
+    const user = await this.usersService.findOne({email:email});
     console.log("user",user)
      if (user) {
       if(await bcrypt.compare(pass, user.password)) return user;

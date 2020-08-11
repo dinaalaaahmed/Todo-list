@@ -9,12 +9,12 @@ import { JwtStrategy } from './jwt.strategy';
 import { AuthController } from './auth.controller';
 import { TypegooseModule } from "nestjs-typegoose";
 import { User } from 'src/models/user.model';
-import { UsersRepositry } from 'src/users/users.service';
+import { UsersService } from 'src/users/users.service';
 @Module({
   imports: [
     TypegooseModule.forFeature([User])
   ],
-  providers: [AuthService, JwtStrategy, UsersRepositry],
+  providers: [AuthService, JwtStrategy, UsersService],
   controllers: [AuthController],
 })
 export class AuthModule {}

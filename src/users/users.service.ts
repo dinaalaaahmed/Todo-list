@@ -5,25 +5,26 @@ import { ReturnModelType } from "@typegoose/typegoose";
 import { AuthDto } from "src/auth/auth.dto";
 
 @Injectable()
-export class UsersRepositry {
+export class UsersService {
   constructor(
-    @InjectModel(User) private readonly userModel: ReturnModelType<typeof User>
+    @InjectModel(User) 
+    private usersRepository: ReturnModelType<typeof User>
   ) {}
 
   async create(createUserDto: AuthDto): Promise<User> {
-    const createdUser = new this.userModel(createUserDto);
+    const createdUser = new this.usersRepository(createUserDto);
     return await createdUser.save();
   }
 
   async findOne(item): Promise<User| null> {
-    return await this.userModel.findOne(item,(err, user)=>{
-        if(err) return 0;
+    return await this.usersRepository.findOne(item,(err, user)=>{
+        if(err) return null;
         return user;
     });
   }
   async findOneAndUpdate(item,update): Promise<User| null> {
-    return await this.userModel.findOneAndUpdate(item,update,(err, user)=>{
-        if(err) return 0;
+    return await this.usersRepository.findOneAndUpdate(item,update,(err, user)=>{
+        if(err) return null;
         return user;
     });
       
